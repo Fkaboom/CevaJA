@@ -4,6 +4,7 @@ import enuns.FormaPagamento;
 import enuns.StatusPedidos;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class Pedido {
         this.statusPedidos = statusPedidos;
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
     public long getId() {
         return id;
     }
@@ -32,6 +37,7 @@ public class Pedido {
         for (Produto produto : produtos) {
           valorTotalPedido = valorTotalPedido.add(produto.getValor());
         }
-     return valorTotalPedido;
+
+     return valorTotalPedido.setScale(2, RoundingMode.HALF_UP);
     }
 }
