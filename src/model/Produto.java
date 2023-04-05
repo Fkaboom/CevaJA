@@ -11,6 +11,7 @@ public class Produto {
     private LocalDate vencimento;
     private String origem;
 
+
     public Produto(BigDecimal valor, String nome, LocalDate fabricacao, LocalDate vencimento, String origem) {
         this.valor = valor;
         this.nome = nome;
@@ -21,5 +22,9 @@ public class Produto {
 
     public BigDecimal getValor() {
         return valor;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
