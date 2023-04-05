@@ -32,12 +32,30 @@ public class Pedido {
     public long getId() {
         return id;
     }
-    public BigDecimal calcularValorTotal(){
-        BigDecimal valorTotalPedido = BigDecimal.ZERO;
-        for (Produto produto : produtos) {
-          valorTotalPedido = valorTotalPedido.add(produto.getValor());
-        }
 
-     return valorTotalPedido.setScale(2, RoundingMode.HALF_UP);
+    public BigDecimal calcularValorTotal() {
+        List<Produto> produtosPedido = produtos;
+        listarProdutos(produtosPedido);
+        BigDecimal valorTotalPedido = BigDecimal.ZERO;
+        //arrumar calculo com stream
+//        BigDecimal valorTotalPedido = BigDecimal.ZERO;
+//        for (Produto produto : produtos) {
+//            valorTotalPedido = valorTotalPedido.add(produto.getValor());
+//        }
+
+
+        produtos.stream()
+                .forEach((produto) -> {
+                    valorTotalPedido.add(produto.getValor());
+                });
+
+        return valorTotalPedido.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    private void listarProdutos(List<Produto> produtosPedido) {
+        produtosPedido.stream()
+                .forEach((produto) -> {
+                    System.out.println("Produto " + produto.getNome() + " Valor: R$" + produto.getValor());
+                });
     }
 }

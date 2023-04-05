@@ -25,8 +25,10 @@ public class Main {
 
         Produto produto = new Produto(new BigDecimal(20.6).setScale(2, RoundingMode.HALF_UP), "Corote", fabricacao, validade, "Alemanha");
         Produto produto2 = new Produto(new BigDecimal(20.6).setScale(2, RoundingMode.HALF_UP), "teste", fabricacao, validade, "Alemanha");
-
-        Pedido pedido1 = new Pedido(Gabriel, Arrays.asList(produto, produto2), LocalDateTime.of(28, 12, 29, 12, 52, 58, 45), StatusPedidos.ACEITO);
+        Produto produto3 = new Produto(new BigDecimal(20.6).setScale(2, RoundingMode.HALF_UP), "teste", fabricacao, validade, "Alemanha");
+        Pedido pedido1 = new Pedido(Gabriel, Arrays.asList(produto, produto2,produto3), LocalDateTime.of
+                (28, 12, 29, 12, 52, 58, 45),
+                StatusPedidos.ACEITO);
 
         PedidoService pedidoService = new PedidoService();
         pedidoService.efetuarPedido(pedido1);

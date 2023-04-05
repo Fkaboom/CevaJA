@@ -11,13 +11,6 @@ public class PedidoService {
 
         //System.out.println("Pedido #" + pedido.getProdutos() + " efetuado com sucesso!");
 
-        List<Produto> produtosPedido = pedido.getProdutos();
-        produtosPedido.stream()
-                        .forEach(produto ->
-                        {
-                            System.out.println("Produto " + produto.getNome() + " Valor: R$" + produto.getValor());
-                        });
-
         System.out.println("Valor total: " + pedido.calcularValorTotal());
     }
 
